@@ -1,14 +1,12 @@
-pipeline {
-    agent any
-    options {
-        // Timeout counter starts AFTER agent is allocated
-        timeout(time: 1, unit: 'SECONDS')
-    }
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-    }
-}
+pipeline:
+    - name: build
+      steps: 
+        - name: checkout 
+          type: git-clone
+          configuration: 
+            repo: https://github.com/satyab143/raviLogin.git
+         - name: build application
+           type: shell
+           configuration: 
+             script:  |
+               
